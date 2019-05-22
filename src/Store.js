@@ -1,9 +1,6 @@
-import React from 'react'
-
+import React, { useContext } from 'react'
+import { AppContext } from './context'
 export default () => {
-    return (
-        <div>
-            Store!
-    </div>
-    )
+	const { inventory, setInventory } = useContext(AppContext)
+	return <div>{inventory.fish1.toString()}</div>
 }
