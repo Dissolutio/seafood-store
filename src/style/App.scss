@@ -1,7 +1,3 @@
-.nav--slider {
-position: absolute;
-left: -40vw;
-}
-.nav--slider__closed {
-    left: 100vw;
-}
+@import 'nav';
+@import 'hamburger';
+@import 'header';
