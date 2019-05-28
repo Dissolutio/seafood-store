@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { Nav, NavLink } from 'reactstrap'
 import { AppContext } from '../context'
 export default () => {
@@ -19,9 +20,9 @@ export default () => {
 			</div>
 			<div className={`sidenav ${sidenavIsOpen ? 'sidenav-open' : ''}`}>
 				<Nav card vertical>
-					<NavLink href="/">Store</NavLink>
-					<NavLink href="/cart">Cart</NavLink>
-					<NavLink href="/inventory">Inventory</NavLink>
+					<Link to="/store">Store</Link>
+					<Link to="/cart">Cart</Link>
+					<Link to="/inventory">Inventory</Link>
 				</Nav>
 			</div>
 		</>

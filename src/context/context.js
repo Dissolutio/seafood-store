@@ -1,28 +1,29 @@
 import React, { createContext, useState } from 'react'
-
 export const Context = createContext({})
-
 export const Provider = props => {
-	// Initial values are obtained from the props
-	const { sidenavIsOpen: sidenavInitial, inventory: fishes, children } = props
+	const [sidenavIsOpen, setSidenavIsOpen] = useState(false)
+	const [customerShoppingCart, setCustomerShoppingCart] = useState({})
+	const toggleSidenav = () => setSidenavIsOpen(!sidenavIsOpen)
 
-	// Use State to keep the values
-	const [sidenavIsOpen, setSidenavIsOpen] = useState(sidenavInitial)
-	const [inventory, setInventory] = useState(fishes)
-	const toggleSidenav = sidenavIsOpen => {
-		setSidenavIsOpen(!setSidenavIsOpen)
+	const addToOrder = storeItem => {
+		console.log(storeItem)
+		let updatedCustomerShoppingCart = Object.assign({}, customerShoppingCart)
+		if (updatedCustomerShoppingCart[storeItem.id]) {
+			updatedCustomerShoppingCart[storeItem.id] += 1
+		} else {
+			updatedCustomerShoppingCart[storeItem.id] = Object.assign({}, { [storeItem.id]: 1 })
+		}
+		setCustomerShoppingCart(updatedCustomerShoppingCart)
 	}
-	// Make the context object:
 	const appContext = {
 		sidenavIsOpen,
 		setSidenavIsOpen,
 		toggleSidenav,
-		inventory,
-		setInventory,
+		customerShoppingCart,
+		setCustomerShoppingCart,
+		addToOrder,
 	}
-
-	// pass the value in provider and return
-	return <Context.Provider value={appContext}>{children}</Context.Provider>
+	return <Context.Provider value={appContext}>{props.children}</Context.Provider>
 }
 
 export const { Consumer } = Context
