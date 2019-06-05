@@ -18,60 +18,8 @@ export class Firebase {
 		this.auth = app.auth()
 		this.db = app.database()
 	}
-
-	// AUTH API
-	doCreateUserWithEmailAndPassword = (email, password) => this.auth.createUserWithEmailAndPassword(email, password)
-	doSignInWithEmailAndPassword = (email, password) => this.auth.signInWithEmailAndPassword(email, password)
-	doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider)
-	doSignInWithFacebook = () => this.auth.signInWithPopup(this.facebookProvider)
-	doSignOut = () => this.auth.signOut()
-	doSendEmailVerification = () =>
-		this.auth.currentUser.sendEmailVerification({
-			url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
-		})
-
-	// *** Merge Auth and DB User API *** //
-	onAuthUserListener = (next, fallback) =>
-		this.auth.onAuthStateChanged(authUser => {
-			if (authUser) {
-				this.user(authUser.uid)
-					.once('value')
-					.then(snapshot => {
-						const dbUser = snapshot.val()
-						// assign default role
-						if (dbUser && !dbUser.userRole) {
-							dbUser.userRole = 'default'
-						}
-						// merge auth and db user
-						authUser = {
-							uid: authUser.uid,
-							...dbUser,
-						}
-						next(authUser)
-					})
-			} else {
-				fallback()
-			}
-		})
-
-	// *** User API ***
-	user = uid => this.db.ref(`users/${uid}`)
-	users = () => this.db.ref('users')
-
-	// *** Message API ***
-	message = uid => this.db.ref(`messages/${uid}`)
-	messages = () => this.db.ref('messages')
-
-	// *** Armies API ***
-	userArmies = uid => this.db.ref(`armies/${uid}`)
-	publicArmies = id => this.db.ref(`armies/public/${id}`)
-
-	// *** Armies API ***
-	userLibraries = uid => this.db.ref(`libraries/${uid}`)
-	publicArmies = id => this.db.ref(`armies/public/${id}`)
-
-	// *** Cards API ***
-	coreHeroscapeCards = () => this.db.ref('cards/coreHeroscapeCards')
+	inventory = () => this.db.ref('inventory')
+	inventoryItem = fishId => this.db.ref(`inventory/${fishId}`)
 }
 export const FirebaseContext = React.createContext({})
 export const withFirebase = Component => props => (
