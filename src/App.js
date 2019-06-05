@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { withFirebase } from './context/firebase'
 import Store from './Store.js'
 import Cart from './Cart.js'
 import Inventory from './Inventory.js'
 import Header from './components//Header.js'
-
 import { sampleFishes, sampleCart } from './sample-data'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './style/App.scss'
 
-export default class App extends Component {
+class App extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -17,6 +17,11 @@ export default class App extends Component {
 			cart: {},
 			resetAppDoublePress: 0,
 		}
+	}
+	uploadInventoryToFirebase = () => {
+		this.props.firebase.inventory().set(this.state.inventory, () => {
+			console.log('SUCCESSFUL WRITE')
+		})
 	}
 	componentDidMount() {
 		const localStorageCart = localStorage.getItem('cart')
@@ -121,6 +126,7 @@ export default class App extends Component {
 
 		return (
 			<div className="app-wrapper">
+				<button onClick={this.uploadInventoryToFirebase}>UPLOAD</button>
 				<Header resetAppClick={resetAppClick} resetAppDoublePress={resetAppDoublePress} />
 				<div className="container page-wrapper">
 					<Switch>
@@ -171,3 +177,4 @@ export default class App extends Component {
 		)
 	}
 }
+export default withFirebase(App)
