@@ -1,3 +1,14 @@
-@import 'nav';
-@import 'hamburger';
-@import 'header';
+@import 'reset';
+.checkout {
+	font-size: 1.6rem;
+}
+.small-print-card-info {
+	font-size: 0.8rem;
+}
+#header {
+	font-size: 1.6rem;
+}
+.active {
+	text-emphasis-color: #ce0056;
+	font-weight: 700;
+}
