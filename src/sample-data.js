@@ -1,17 +1,3 @@
-const sampleCart = {
-	fish1: {
-		id: 'fish1',
-		name: 'Pacific Halibut',
-		price: 1724,
-		quantity: 1,
-	},
-	fish2: {
-		id: 'fish2',
-		name: 'Lobster',
-		price: 3200,
-		quantity: 3,
-	},
-}
 const sampleFishes = {
 	fish1: {
 		id: 'fish1',
@@ -95,4 +81,4 @@ const sampleFishes = {
 	},
 }
 
-export { sampleFishes, sampleCart }
+export { sampleFishes }
