@@ -1,1 +1,2 @@
-export { Context as AppContext, Provider as AppContextProvider, Consumer as AppContextConsumer } from './context'
+import { AppContext, AppContextProvider } from './appContext'
+export { AppContext, AppContextProvider }
