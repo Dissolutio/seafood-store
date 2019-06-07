@@ -3,14 +3,15 @@ import { ListGroup, ListGroupItem } from 'reactstrap'
 import { Elements, StripeProvider } from 'react-stripe-elements'
 import CheckoutForm from './components/CheckoutForm'
 import { formatPrice, calculateTotal } from './helpers'
-
+import { AppContext } from './context'
 export default props => {
-	const { cart, resetOrder } = props
+	const appContext = React.useContext(AppContext)
+	const { cart, emptyCart } = appContext
 	return (
 		<div>
 			<StripeProvider apiKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}>
 				<Elements>
-					<CheckoutForm totalPrice={calculateTotal(cart)} resetOrder={resetOrder} />
+					<CheckoutForm totalPrice={calculateTotal(cart)} emptyCart={emptyCart} />
 				</Elements>
 			</StripeProvider>
 			<ListGroup>

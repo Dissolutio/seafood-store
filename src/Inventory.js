@@ -1,18 +1,15 @@
 import React from 'react'
-import EditFishForm from './components/EditFishForm'
+import EditProductForm from './components/EditProductForm'
+import { AppContext } from './context'
 const Inventory = props => {
-	const { inventory, updateInventoryItem, deleteInventoryItem } = props
+	const appContext = React.useContext(AppContext)
+	const { inventory } = appContext
 	return (
 		<>
 			<h2>Manage Inventory</h2>
 			<ul>
-				{Object.values(inventory).map((fish, index) => (
-					<EditFishForm
-						key={`${fish.id}+${index}`}
-						fish={fish}
-						updateInventoryItem={updateInventoryItem}
-						deleteInventoryItem={deleteInventoryItem}
-					/>
+				{Object.values(inventory).map((product, index) => (
+					<EditProductForm key={product.id} product={product} />
 				))}
 			</ul>
 		</>

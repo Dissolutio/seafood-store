@@ -1,39 +1,22 @@
 import React from 'react'
-import { Nav, NavItem, Button } from 'reactstrap'
-import { Link } from 'react-router-dom'
-export default props => {
-	const { resetAppClick, resetAppDoublePress } = props
-	const buttonText = () => {
-		if (resetAppDoublePress === 1) {
-			return {
-				text: 'Really Reset App?',
-				color: 'danger',
-			}
-		} else {
-			return {
-				text: 'Reset App',
-				color: 'info',
-			}
-		}
-	}
+import { NavLink } from 'react-router-dom'
+export default () => {
 	return (
-		<header id="header" className="container mt-3">
-			<Nav tag="nav" className="d-flex justify-content-end">
-				<NavItem className="pl-3 pr-3">
-					<Link className="heading-2" to="/">
-						Seafood Store
-					</Link>
-				</NavItem>
-				<NavItem className="pl-3 pr-3">
-					<Link to="/cart">Cart</Link>
-				</NavItem>
-				<NavItem className="pl-3 pr-3">
-					<Link to="/inventory">Inventory</Link>
-				</NavItem>
-			</Nav>
-			<Button outline className="m-4" color={buttonText().color} onClick={resetAppClick}>
-				{buttonText().text}
-			</Button>
+		<header id="header" className="row d-flex flex-row flex-wrap text-center">
+			<div className="col-xs-12 col-sm-6 col-md-4">
+				<img src="/images/logo.png" alt="logo" />
+			</div>
+			<nav className="col-xs-12 col-sm-6 col-md-8 ">
+				<NavLink className="btn btn-link" to="/">
+					Shop
+				</NavLink>
+				<NavLink className="btn btn-link" to="/cart">
+					Cart
+				</NavLink>
+				<NavLink className="btn btn-link" to="/inventory">
+					Inventory
+				</NavLink>
+			</nav>
 		</header>
 	)
 }

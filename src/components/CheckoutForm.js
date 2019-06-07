@@ -24,15 +24,14 @@ class CheckoutForm extends Component {
 			}),
 		})
 		const data = await response.json()
-		console.log(data)
 		if (response.ok) {
 			this.setState({ complete: true, completedCharge: data })
-			this.props.resetOrder()
+			this.props.emptyCart()
 		}
 	}
 	async createCharge() {
 		let { token } = await this.props.stripe.createToken({ name: 'Name' })
-		console.log(token)
+		console.log()
 		let response = await fetch(`${process.env.REACT_APP_CREATE_CHARGE_ENDPOINT}`, {
 			method: 'POST',
 			body: JSON.stringify({
@@ -46,7 +45,7 @@ class CheckoutForm extends Component {
 		if (response.ok) {
 			const data = await response.json()
 			this.setState({ complete: true, completedCharge: data.charge })
-			this.props.resetOrder()
+			this.props.emptyCart()
 		} else {
 			const error = await response.json()
 			this.setState({ error: error })
