@@ -1,9 +1,18 @@
 import React from 'react'
-
-export default () => {
-    return (
-        <div>
-            Inventory!
-    </div>
-    )
+import EditProductForm from './components/EditProductForm'
+import { AppContext } from './context'
+const Inventory = props => {
+	const appContext = React.useContext(AppContext)
+	const { inventory } = appContext
+	return (
+		<>
+			<h2 className="display-4 text-center">Manage Inventory</h2>
+			<ul>
+				{Object.values(inventory).map((product, index) => (
+					<EditProductForm key={product.id} product={product} />
+				))}
+			</ul>
+		</>
+	)
 }
+export default Inventory
