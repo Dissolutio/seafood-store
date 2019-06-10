@@ -10,9 +10,6 @@ export default () => {
 				<NavLink className="btn btn-link" to="/">
 					Shop
 				</NavLink>
-				<NavLink className="btn btn-link" to="/cart">
-					Cart
-				</NavLink>
 				<NavLink className="btn btn-link" to="/inventory">
 					Inventory
 				</NavLink>
