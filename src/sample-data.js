@@ -1,3 +1,24 @@
+const sampleCart = {
+	fish1: {
+		id: 'fish1',
+		name: 'Pacific Halibut',
+		price: 1724,
+		quantity: 2,
+	},
+
+	fish2: {
+		id: 'fish2',
+		name: 'Lobster',
+		price: 3200,
+		quantity: 2,
+	},
+	fish4: {
+		id: 'fish4',
+		name: 'Mahi Mahi',
+		price: 1129,
+		quantity: 2,
+	},
+}
 const sampleFishes = {
 	fish1: {
 		id: 'fish1',
@@ -5,7 +26,7 @@ const sampleFishes = {
 		image: '/images/hali.jpg',
 		desc: 'Everyones favorite white fish. We will cut it to the size you need and ship it.',
 		price: 1724,
-		inStock: false,
+		inStock: true,
 	},
 
 	fish2: {
@@ -23,7 +44,7 @@ const sampleFishes = {
 		image: '/images/scallops.jpg',
 		desc: 'Big, sweet and tender. True dry-pack scallops from the icey waters of Alaska. About 8-10 per pound',
 		price: 1684,
-		inStock: true,
+		inStock: false,
 	},
 
 	fish4: {
@@ -81,4 +102,4 @@ const sampleFishes = {
 	},
 }
 
-export { sampleFishes }
+export { sampleFishes, sampleCart }

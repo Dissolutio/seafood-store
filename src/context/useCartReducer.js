@@ -1,6 +1,7 @@
 import React from 'react'
+import { sampleCart } from '../sample-data'
 
-const initialState = {}
+const initialState = sampleCart
 function useCartReducer() {
 	const [state, dispatch] = React.useReducer(cartReducer, initialState)
 	return [state, dispatch]
