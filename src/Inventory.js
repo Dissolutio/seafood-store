@@ -6,7 +6,7 @@ const Inventory = props => {
 	const { inventory } = appContext
 	return (
 		<>
-			<h2>Manage Inventory</h2>
+			<h2 className="display-4 text-center">Manage Inventory</h2>
 			<ul>
 				{Object.values(inventory).map((product, index) => (
 					<EditProductForm key={product.id} product={product} />
