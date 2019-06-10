@@ -2,12 +2,14 @@ import React from 'react'
 import { Button, Card, CardImg, CardHeader, CardText, CardBody, CardFooter } from 'reactstrap'
 import { formatPrice } from './helpers'
 import { AppContext } from './context'
+import Cart from './Cart'
 
 const Store = props => {
 	const appContext = React.useContext(AppContext)
 	const { inventory, addItemToCart } = appContext
 	return (
 		<>
+			<Cart />
 			<ul className="row d-flex">
 				{Object.values(inventory).map((product, index) => {
 					const { id, image, name, price, desc, inStock } = product
