@@ -1,0 +1,12 @@
+.large-font {
+  font-size: 1.7rem;
+}
+.small-print-card-info {
+  font-size: 0.8rem;
+}
+#header {
+  align-items: center;
+}
+#header a {
+  font-size: 1.4rem;
+}
